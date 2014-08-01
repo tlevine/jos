@@ -1,5 +1,11 @@
-def _issues(html):
-    return html.xpath('id("issuesToc")//a/@href')
+import lxml.html
 
-def _pdfs(html):
-    html.xpath('//div[@class="fullContentLink"]/a/@href')
+XPATHS = {
+    'issues': 'id("issuesToc")//a/@href',
+    'pdfs': '//div[@class="fullContentLink"]/a/@href',
+}
+
+def links(response):
+    html = lxml.html.fromstring(response.text)
+    html.make_links_absolute()
+    return {name: html.xpath(xpath) for name, xpath in XPATHS}
