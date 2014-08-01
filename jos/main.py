@@ -26,4 +26,4 @@ def main():
                     headers = {'referer': response.url},
                     cookies = dict(response.cookies))
                 if not pdf_response.ok:
-                    raise ValueError('Bad PDF response at %s' % response.url)
+                    raise ValueError('Bad PDF response at %s' % pdf_response.url)
