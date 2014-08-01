@@ -1,5 +1,6 @@
 import os
 
+import requests
 from picklecache import cache
 
 @cache(os.path.join(os.path.expanduser('~'),'.jos'))
